@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; width: 100%; padding: 0; margin: 0; display: flex;">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+
+  <!-- leaflet knjižnica -->
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+  <!-- leaflet stili -->
+  <link rel="stylesheet" href="css/leaflet-routing-machine.css" />
+  <!-- leaflet knjižnica za poti -->
+  <script src="skripte/leaflet-routing-machine.js"></script>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>DN1</title>
+  </head>
+
+  <body style="height: 100%; width: 100%; padding: 0; margin: 0; display: flex;">
+    
+    <!-- MENI -->
+    <meni>
+      <table>
+        <tr>
+          <td>Zanimivosti:</td>
+          <td>
+            <button id="dodajFakultete">Dodaj fakultete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Najdeni rezultati:</td>
+          <td>0 rezultatov</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button id="izbrisiRezultate" disabled="true">
+              Odstrani vse interesne točke</button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input id="idRadij" type="checkbox" name="radij" value="radij">
+            Prikaz radija<br></td>
+        </tr>
+        <tr>
+          <td>
+            <input id="idDoFri" type="radio" name="pot" value="doFri" checked>Pot do FRI<br>
+            <input id="idIzFri" type="radio" name="pot" value="izFri">Pot iz FRI<br>
+          </td>
+        </tr>
+      </table>
+    </meni>
+
+    <!-- TELO -->
+    <telo id="mapa_id"></telo>
+    
+  </body>
+  
+</html>

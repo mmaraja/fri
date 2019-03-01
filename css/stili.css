@@ -1,0 +1,36 @@
+html, body {
+}
+
+meni {
+  margin: 10px;
+}
+
+.info-element {
+}
+
+table {
+  border-spacing: 0 10px;
+}
+
+button {
+  background: white;
+}
+
+.restavracije {
+  background: url(../slike/restaurant_logo_mini.png) no-repeat scroll;
+  background-position: 4px 2px;
+  height: 31px;
+  padding: 7px;
+  padding-left: 35px;
+  vertical-align: top
+}
+
+telo {
+  flex: 1;
+  float: right;
+  margin: 10px;
+  overflow: visible;
+  padding: 10px;
+  display: inline-block;;
+  background-color: lightgray;
+}
