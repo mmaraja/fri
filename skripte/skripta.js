@@ -73,7 +73,8 @@ window.addEventListener('load', function () {
     .addEventListener("click", function() {
       prikaziObmocje();
     });
-  
+    document.querySelector("#dodajFakultete").addEventListener('click', dodajFakultete);
+    document.querySelector("#dodajRestavracije").addEventListener("click", dodajRestavracije);
 });
 
 
@@ -86,21 +87,24 @@ function dodajFakultete() {
     izrisRezultatov(jsonRezultat);
     document.getElementById("dodajFakultete").disabled = true;
     document.getElementById("izbrisiRezultate").disabled = false;
+   
   });
 }
-
-
+ 
+    
 /**
  * Na zemljevid dodaj oznake z bližnjimi restavracijami in 
  * gumb onemogoči.
  */
 function dodajRestavracije() {
-  pridobiPodatke(function (jsonRezultat) {
+  pridobiPodatke("restavracije", function (jsonRezultat) {
     izrisRezultatov(jsonRezultat);
     document.getElementById("dodajRestavracije").disabled = true;
     document.getElementById("izbrisiRezultate").disabled = false;
+    
   });
 }
+  
 
 
 /**
