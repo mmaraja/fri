@@ -16,7 +16,6 @@ const FRI_LNG = 14.46931;
  * Ko se stran naloži, se izvedejo ukazi spodnje funkcije
  */
 window.addEventListener('load', function () {
-
   // Osnovne lastnosti mape
   var mapOptions = {
     center: [FRI_LAT, FRI_LNG],
@@ -99,9 +98,9 @@ function dodajFakultete() {
 function dodajRestavracije() {
   pridobiPodatke("restavracije", function (jsonRezultat) {
     izrisRezultatov(jsonRezultat);
-    document.getElementById("dodajRestavracije").disabled = true;
+    document.getElementById("dodajRestavracije").disabled = false;
     document.getElementById("izbrisiRezultate").disabled = false;
-    
+ 
   });
 }
   
@@ -125,8 +124,15 @@ function pridobiPodatke(vrstaInteresneTocke, callback) {
     // rezultat ob uspešno prebrani datoteki
     if (xobj.readyState == 4 && xobj.status == "200") {
         var json = JSON.parse(xobj.responseText);
-        
+       
         // nastavimo ustrezna polja (število najdenih zadetkov)
+        if (vrstaInteresneTocke == "fakultete") {
+          document.getElementById("fakultete_rezultati").innerHTML=json.features.length;  
+        } else {
+          document.getElementById("restavracije_rezultati").innerHTML=json.features.length;  
+        }
+        
+        
         
         // vrnemo rezultat
         callback(json);
@@ -187,7 +193,7 @@ function izrisRezultatov(jsonRezultat) {
     var jeObmocje = 
       typeof(znacilnosti[i].geometry.coordinates[0]) == "object";
     var opis = znacilnosti[i].properties.name;
-
+    
     // pridobimo koordinate
     var lng = jeObmocje ? znacilnosti[i].geometry.coordinates[0][0][0] : 
       znacilnosti[i].geometry.coordinates[0];
@@ -195,8 +201,10 @@ function izrisRezultatov(jsonRezultat) {
       znacilnosti[i].geometry.coordinates[1];
     if (prikaziOznako(lng, lat))
       dodajMarker(lat, lng, opis, znacilnosti[i].properties.amenity);
+    
+   
   }
-}
+} 
 
 
 /**
