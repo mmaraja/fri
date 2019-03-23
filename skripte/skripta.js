@@ -74,6 +74,13 @@ window.addEventListener('load', function () {
     });
     document.querySelector("#dodajFakultete").addEventListener('click', dodajFakultete);
     document.querySelector("#dodajRestavracije").addEventListener("click", dodajRestavracije);
+   document. getElementById("radij").addEventListener("keyup", function() {
+     prikaziObmocje(); 
+   });
+   document.getElementById("radij").addEventListener("keyup", function() {
+     posodobiOznakeNaZemljevidu();
+     
+   });
 });
 
 
@@ -213,6 +220,16 @@ function izrisRezultatov(jsonRezultat) {
  */
 function posodobiOznakeNaZemljevidu() {
   // FRI marker pustimo, ostale odstranimo
+  if(mapa.hasLayer(markerji)) {
+    markerji.removeLayer(markerji);
+    
+    markerji.addLayer(obmocje);
+  }
+ else {
+   mapa.removeLayer(obmocje);
+   mapa.addLayer(markerji);
+ }
+  
 }
 
 
@@ -268,6 +285,7 @@ function prikaziObmocje() {
   } else if (obmocje != null) {
     mapa.removeLayer(obmocje);
   }
+  
 }
 
 
