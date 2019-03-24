@@ -79,7 +79,6 @@ window.addEventListener('load', function () {
    });
    document.getElementById("radij").addEventListener("keyup", function() {
      posodobiOznakeNaZemljevidu();
-     
    });
 });
 
@@ -241,10 +240,40 @@ function posodobiOznakeNaZemljevidu() {
 function prikazPoti(latLng) {
   // Izbrišemo obstoječo pot, če ta obstaja
   if (pot != null) mapa.removeControl(pot);
-
-  // pot = ...
+ if( document.getElementById("idIzFri").checked) {
+  pot= L.Routing.control({
+    language: 'sl',
+    waypoints: [
+        L.latLng(FRI_LAT, FRI_LNG),
+        L.latLng(latLng),
+        
+        ],
+    
+    lineOptions: {
+      styles: [{color: '#242c81', weight: 12}]
+      
+    },
+  
+  }).addTo(mapa);
+  } 
+ else { ( document.getElementById("idDoFri").checked) 
+  pot= L.Routing.control({
+    language: 'sl',
+    waypoints: [
+      
+        L.latLng(latLng),
+          L.latLng(FRI_LAT, FRI_LNG),
+        ],
+    
+    lineOptions: {
+      styles: [{color: '#242c81', weight: 12}]
+      
+    },
+  
+  }).addTo(mapa);
+  }
+   mapa.closePopup();
 }
-
 
 /**
  * Preveri ali izbrano oznako na podanih GPS koordinatah izrišemo
